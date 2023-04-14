@@ -45,8 +45,11 @@ const submitBtn = document.getElementById("submit")
 let currentQuiz = 0;
 let score = 0;
 
-
-
+const deselectAnswer = () => {
+  answerEls.forEach((answerEl) =>{
+    answerEl.checked = false;
+  })
+}
 
 const loadQuiz = () => {
   const currentQuizData = quizData[currentQuiz]
@@ -57,7 +60,7 @@ const loadQuiz = () => {
   c_text.innerHTML = currentQuizData.c;
   d_text.innerHTML = currentQuizData.d;
 
-  
+  deselectAnswer()
 }
 
 loadQuiz()
@@ -72,12 +75,6 @@ const getSelected = () => {
   });
 
   return answer
-}
-
-const deselectAnswer = () => {
-  answerEls.forEach((answerEl) =>{
-    answerEl.checked = false;
-  })
 }
 
 submitBtn.addEventListener("click", () => {
